@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url("1.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin: 50px auto;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .character-counter {
+            font-size: 12px;
+            text-align: left;
+            color: #555;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+        .warning {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Message Box</h1>
+        <textarea id="messageBox" placeholder="Type your message here..." maxlength="200" rows="5"></textarea>
+        <div class="character-counter" id="charCounter">0/200 characters</div>
+        <div class="warning" id="warningMessage"></div>
+    </div>
+
+    <script>
+        const messageBox = document.getElementById('messageBox');
+        const charCounter = document.getElementById('charCounter');
+        const warningMessage = document.getElementById('warningMessage');
+        const maxLength = 200;
+
+        messageBox.addEventListener('input', function () {
+            const currentLength = messageBox.value.length;
+            charCounter.textContent = `${currentLength}/${maxLength} characters`;
+
+            if (currentLength >= maxLength) {
+                warningMessage.textContent = 'You have reached the maximum character limit!';
+            } else {
+                warningMessage.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>
